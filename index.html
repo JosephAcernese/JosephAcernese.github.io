@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joseph Acernese - Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            overflow: hidden; /* Prevents scrolling with canvas background */
+        }
+
+        /* Canvas for background gradient */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2em;
+            text-align: center;
+            color: #f0f4f8;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 2em;
+            border-bottom: 2px solid #0073e6;
+        }
+        header img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 1em;
+        }
+        h1 {
+            color: #0073e6;
+            font-size: 2.5em;
+            margin: 0.2em 0;
+        }
+        h2 {
+            color: #555;
+            font-weight: normal;
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+
+        .links a {
+            color: #0073e6;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 1em;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .about {
+            margin: 2em auto;
+            color: #333;
+            max-width: 600px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+            padding: 1em 0;
+        }
+        footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Canvas for the gradient background -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Main content -->
+    <div class="container">
+        <header>
+            <img src="https://avatars.githubusercontent.com/u/92707200?v=4" alt="Joseph Acernese">
+            <h1>Joseph Acernese</h1>
+            <h2>Software Engineer</h2>
+            <div class="links">
+                <a href="josephacernese.github.io/resume.pdf" target="_blank">Resume</a>
+                <a href="https://www.linkedin.com/in/joseph-acernese/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/JosephAcernese" target="_blank">GitHub</a>
+            </div>
+        </header>
+
+        <section class="about">
+            <p></p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Joseph Acernese</p>
+    </footer>
+
+    <!-- JavaScript for the gradient background -->
+    <script>
+        const canvas = document.getElementById("bgCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Set canvas dimensions to cover the full viewport
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            drawGradient();
+        }
+
+        // Draw a non-animated gradient with a blue theme
+        function drawGradient() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Create a radial gradient with #7393B3 as the base color
+            const gradient = ctx.createRadialGradient(
+                canvas.width * 0.5, canvas.height * 0.5, 0,
+                canvas.width * 0.5, canvas.height * 0.5, canvas.width * 0.7
+            );
+
+            gradient.addColorStop(0, "#ffffff");
+            gradient.addColorStop(0.5, "#ffffff");
+            gradient.addColorStop(1, "#5f8fe8");
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Redraw the gradient when the window is resized
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas(); // Initial canvas setup
+    </script>
+</body>
+</html>
+
