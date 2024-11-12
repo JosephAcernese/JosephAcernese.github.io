@@ -93,7 +93,7 @@ class Image:
     #Innit function is able to handle: Filename or high/width
     #Filename loads an image in from the files
     #Height/Width creates a blank image with the same length and height, defaults to RBG
-    def __init__(self, fileName=None, padding=zero_padding, height = None, width = None, mode = None):
+    def __init__(self, fileName=None, padding=zero_padding, height = None, width = None, mode = None,pixels = None):
 
         #If filename is given
         if fileName != None:
@@ -107,8 +107,11 @@ class Image:
             self.pixels = self.image.load()
             self.width = width
             self.height = height
+
+        if pixels: 
+            for i in range(0,len(pixels),4):
+                self.pixels[ i//width, i%width ] = (pixels[i],pixels[i+1],pixels[i+2],pixels[i+3])
         
-        #Set padding
         self.padding = padding
 
 
